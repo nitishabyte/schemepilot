@@ -1,0 +1,61 @@
+[
+  {
+    "id": "central_college_scholarship",
+    "name": "Central Sector Scholarship for College & University Students (SAMPLE)",
+    "criteria": [
+      {"field": "is_student", "op": "==", "value": true},
+      {"field": "household_income", "op": "<=", "value": 450000}
+    ],
+    "documents": ["income_certificate", "enrollment_proof", "bank_account", "aadhaar"],
+    "source_url": "https://www.myscheme.gov.in/",
+    "verified": false
+  },
+  {
+    "id": "post_matric_sc",
+    "name": "Post-Matric Scholarship for SC Students (SAMPLE)",
+    "criteria": [
+      {"field": "is_student", "op": "==", "value": true},
+      {"field": "social_category", "op": "==", "value": "SC"},
+      {"field": "household_income", "op": "<=", "value": 250000}
+    ],
+    "documents": ["caste_certificate", "income_certificate", "enrollment_proof", "bank_account"],
+    "source_url": "https://www.myscheme.gov.in/",
+    "verified": false
+  },
+  {
+    "id": "pmay_urban",
+    "name": "PM Awas Yojana - Urban, EWS/LIG (SAMPLE)",
+    "criteria": [
+      {"field": "residence", "op": "==", "value": "urban"},
+      {"field": "owns_house", "op": "==", "value": false},
+      {"field": "household_income", "op": "<=", "value": 600000}
+    ],
+    "documents": ["income_certificate", "aadhaar", "bank_account", "address_proof"],
+    "source_url": "https://www.myscheme.gov.in/",
+    "verified": false
+  },
+  {
+    "id": "pm_kisan",
+    "name": "PM-KISAN Income Support (SAMPLE)",
+    "criteria": [
+      {"field": "is_farmer", "op": "==", "value": true},
+      {"field": "is_income_tax_payer", "op": "==", "value": false}
+    ],
+    "documents": ["land_records", "aadhaar", "bank_account"],
+    "source_url": "https://www.myscheme.gov.in/",
+    "verified": false
+  },
+  {
+    "id": "karnataka_gruha_lakshmi",
+    "name": "Karnataka Gruha Lakshmi (SAMPLE)",
+    "criteria": [
+      {"field": "state", "op": "==", "value": "Karnataka"},
+      {"field": "gender", "op": "==", "value": "female"},
+      {"field": "is_head_of_family", "op": "==", "value": true},
+      {"field": "is_income_tax_payer", "op": "==", "value": false}
+    ],
+    "documents": ["ration_card", "aadhaar", "bank_account"],
+    "source_url": "https://www.myscheme.gov.in/",
+    "verified": false
+  }
+]

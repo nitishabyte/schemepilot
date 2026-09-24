@@ -1,0 +1,20 @@
+{
+  "rule_based": {
+    "n_personas": 15,
+    "avg_precision": 0.934,
+    "avg_recall": 0.729,
+    "avg_f1": 0.796,
+    "total_wrong_value": 1,
+    "total_missed": 16,
+    "total_unsupported_fields": 3
+  },
+  "llm": {
+    "n_personas": 15,
+    "avg_precision": 0.978,
+    "avg_recall": 0.78,
+    "avg_f1": 0.862,
+    "total_wrong_value": 0,
+    "total_missed": 15,
+    "total_unsupported_fields": 1
+  }
+}

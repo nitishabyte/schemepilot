@@ -1,0 +1,92 @@
+[
+  {
+    "id": "p01",
+    "text": "I'm 23, live in Karnataka, family income is ₹4.5 lakh, I'm a student, my father is self-employed, we don't own a house.",
+    "stated": {"age": 23, "state": "Karnataka", "household_income": 450000, "is_student": true, "owns_house": false},
+    "hidden": {"residence": "urban", "gender": "male", "social_category": "General", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p02",
+    "text": "My daughter is 19 and studying in college. We're SC category, live in a village in Odisha, and our whole family earns about 2 lakh a year.",
+    "stated": {"age": 19, "is_student": true, "social_category": "SC", "residence": "rural", "household_income": 200000},
+    "hidden": {"state": "Odisha", "owns_house": true, "gender": "female", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p03",
+    "text": "I'm a farmer in Maharashtra, don't pay any income tax, family doesn't own agricultural equipment but we do farm our own land.",
+    "stated": {"state": "Maharashtra", "is_farmer": true, "is_income_tax_payer": false},
+    "hidden": {"age": 45, "household_income": 180000, "is_student": false, "residence": "rural", "owns_house": true, "gender": "male", "social_category": "OBC", "is_head_of_family": true}
+  },
+  {
+    "id": "p04",
+    "text": "I'm the head of my household, a woman living in Karnataka, and nobody in my family pays income tax.",
+    "stated": {"gender": "female", "is_head_of_family": true, "state": "Karnataka", "is_income_tax_payer": false},
+    "hidden": {"age": 38, "household_income": 220000, "is_student": false, "residence": "rural", "owns_house": true, "social_category": "General", "is_farmer": false}
+  },
+  {
+    "id": "p05",
+    "text": "We live in urban Delhi and don't own any house. Household income is around 5.5 lakh a year.",
+    "stated": {"residence": "urban", "state": "Delhi", "owns_house": false, "household_income": 550000},
+    "hidden": {"age": 30, "is_student": false, "gender": "male", "social_category": "General", "is_income_tax_payer": true, "is_farmer": false, "is_head_of_family": true}
+  },
+  {
+    "id": "p06",
+    "text": "I'm 21, a full-time student in Tamil Nadu, my family's annual income is exactly 4,50,000 rupees.",
+    "stated": {"age": 21, "is_student": true, "state": "Tamil Nadu", "household_income": 450000},
+    "hidden": {"residence": "urban", "owns_house": true, "gender": "male", "social_category": "General", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p07",
+    "text": "Not a student anymore, I graduated last year. I'm from Kerala, income tax payer, we own our house.",
+    "stated": {"is_student": false, "state": "Kerala", "is_income_tax_payer": true, "owns_house": true},
+    "hidden": {"age": 26, "household_income": 900000, "residence": "urban", "gender": "male", "social_category": "General", "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p08",
+    "text": "I don't know our exact income, but we're an SC family, I'm 20 and studying, we live in Bihar.",
+    "stated": {"age": 20, "is_student": true, "social_category": "SC", "state": "Bihar"},
+    "hidden": {"household_income": 180000, "residence": "rural", "owns_house": true, "gender": "female", "is_income_tax_payer": false, "is_farmer": true, "is_head_of_family": false}
+  },
+  {
+    "id": "p09",
+    "text": "My mother is the head of our family, we're in Karnataka, and my father passed away so no one pays income tax now.",
+    "stated": {"gender": "female", "is_head_of_family": true, "state": "Karnataka", "is_income_tax_payer": false},
+    "hidden": {"age": 52, "household_income": 150000, "is_student": false, "residence": "urban", "owns_house": true, "social_category": "General", "is_farmer": false}
+  },
+  {
+    "id": "p10",
+    "text": "22 years old, currently a student, household income is around 3 lakh, we live in an urban area but don't own our flat.",
+    "stated": {"age": 22, "is_student": true, "household_income": 300000, "residence": "urban", "owns_house": false},
+    "hidden": {"state": "Maharashtra", "gender": "female", "social_category": "OBC", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p11",
+    "text": "We are farmers in Punjab. One of my brothers works in the city and pays income tax though.",
+    "stated": {"state": "Punjab", "is_farmer": true, "is_income_tax_payer": true},
+    "hidden": {"age": 40, "household_income": 500000, "is_student": false, "residence": "rural", "owns_house": true, "gender": "male", "social_category": "General", "is_head_of_family": true}
+  },
+  {
+    "id": "p12",
+    "text": "I'm 24, general category, we live in a rural part of Gujarat and don't own a house yet, income about 4 lakh.",
+    "stated": {"age": 24, "social_category": "General", "residence": "rural", "state": "Gujarat", "owns_house": false, "household_income": 400000},
+    "hidden": {"is_student": false, "gender": "male", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p13",
+    "text": "Student here, SC category, but our household income is quite high, about 6 lakh a year, in Rajasthan.",
+    "stated": {"is_student": true, "social_category": "SC", "household_income": 600000, "state": "Rajasthan"},
+    "hidden": {"age": 20, "residence": "urban", "owns_house": true, "gender": "male", "is_income_tax_payer": true, "is_farmer": false, "is_head_of_family": false}
+  },
+  {
+    "id": "p14",
+    "text": "Woman here, but I'm not the head of household - my husband is. We're in Karnataka.",
+    "stated": {"gender": "female", "is_head_of_family": false, "state": "Karnataka"},
+    "hidden": {"age": 35, "household_income": 250000, "is_student": false, "residence": "urban", "owns_house": true, "social_category": "General", "is_income_tax_payer": false, "is_farmer": false}
+  },
+  {
+    "id": "p15",
+    "text": "17 years old, still in school, family lives in urban West Bengal, no house of our own, income under 3 lakh.",
+    "stated": {"age": 17, "is_student": true, "residence": "urban", "state": "West Bengal", "owns_house": false, "household_income": 280000},
+    "hidden": {"gender": "male", "social_category": "OBC", "is_income_tax_payer": false, "is_farmer": false, "is_head_of_family": false}
+  }
+]
