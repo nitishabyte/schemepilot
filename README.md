@@ -33,6 +33,24 @@ A "why am I not eligible?" explanation and a "what if my income changes?" simula
 both just re-runs of the same deterministic engine, so they're cheap, instant, and
 consistent by construction.
 
+### Agent orchestration: LangGraph
+
+The loop above (extract → evaluate → ask, repeated per turn) is orchestrated by a
+compiled **LangGraph `StateGraph`** (`graph_agent.py`), not just a hand-written Python
+loop. Each of the three steps is its own graph node; conversation state persists
+across turns via LangGraph's `MemorySaver` checkpointer, keyed by a `thread_id` — the
+standard LangGraph pattern for a multi-turn conversational agent.
+
+Deliberately unchanged by this: `engine.py` still has zero LLM calls in it. The
+framework governs *when* to extract, evaluate, and ask — it still never decides
+eligibility itself. That hybrid separation (LLM extracts, deterministic engine
+decides) is the same regardless of which orchestration layer sits on top of it.
+
+`app.py` tries to import the LangGraph-backed agent first and falls back to a plain
+Python version (`agent.py`, no framework) if `langgraph` isn't installed, so the app
+still runs in a bare environment. The sidebar shows which one is active
+(`Orchestration: LangGraph` or the fallback message).
+
 ## Project layout
 
 | File | Role |
@@ -41,17 +59,18 @@ consistent by construction.
 | `user_profile.py` | The profile schema, value validation, and a regex-based extractor that works fully offline. |
 | `llm.py` | LLM-based profile extraction, with support for either a free provider (Groq) or a paid one (Anthropic) — see Setup below. Falls back to the regex extractor if neither is configured. |
 | `questions.py` | The adaptive question picker: asks about whichever field is unknown across the most schemes that haven't already failed. |
-| `agent.py` | Ties it together: extract → update profile → evaluate → pick next question. |
+| `agent.py` | The plain-Python orchestration loop: extract → update profile → evaluate → pick next question. No agent framework — used as the fallback if `langgraph` isn't installed. |
+| `graph_agent.py` | The same loop, expressed as a compiled **LangGraph** `StateGraph` with a checkpointer for multi-turn state. See "Agent orchestration" above. |
 | `audit.py` | Appends every evaluation to `logs/audit.jsonl`, so any verdict can be traced back to the profile that produced it. |
 | `app.py` | The Streamlit UI — a case-file/dossier-styled interface with chat, a live scheme "ledger," and a what-if simulator. |
 | `data/schemes.json` | Scheme eligibility rules. **Sample data — see Limitations below.** |
 | `eval/` | The evaluation harness (see Evaluation below). |
-| `tests/` | Unit tests for the engine and extraction logic. |
+| `tests/` | Unit tests for the engine, extraction logic, and the LangGraph agent (`test_graph_agent.py`). |
 
 ## Setup
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt   # now includes langgraph
 streamlit run app.py
 pytest
 ```
@@ -126,6 +145,10 @@ worth reporting honestly rather than downplaying — the prompt did give it an e
 - The 15 personas were hand-labeled by reasoning through the (sample) scheme criteria,
   not sourced independently — if the schemes change, the personas' expected verdicts
   need re-checking too.
+- `graph_agent.py`'s LangGraph orchestration is a linear three-node graph per turn
+  (extract → evaluate → ask), not a branching multi-agent graph — an appropriate scope
+  for what this task needs, but worth being precise about if asked to describe the
+  architecture in more depth.
 
 ## Possible extensions
 
@@ -134,3 +157,5 @@ worth reporting honestly rather than downplaying — the prompt did give it an e
   criteria (human-reviewed before use)
 - A harder LLM-only baseline that doesn't offer POTENTIAL as an explicit escape hatch
 - Document upload / OCR for automatically confirming "have" vs. "need" documents
+- A genuinely branching LangGraph (e.g. parallel category-specific sub-agents for
+  education/housing/financial schemes) instead of the current linear per-turn graph

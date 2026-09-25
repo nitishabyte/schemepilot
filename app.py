@@ -1,5 +1,10 @@
 import streamlit as st
 from agent import SchemePilot
+try:
+    from graph_agent import SchemePilotGraph
+    _HAS_LANGGRAPH = True
+except ImportError:
+    _HAS_LANGGRAPH = False
 from engine import LIKELY, POTENTIAL, INELIGIBLE, document_checklist, PASS, FAIL, UNKNOWN
 from user_profile import FIELDS
 
@@ -143,7 +148,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 if "agent" not in st.session_state:
-    st.session_state.agent = SchemePilot()
+    st.session_state.agent = SchemePilotGraph() if _HAS_LANGGRAPH else SchemePilot()
     st.session_state.chat = [("assistant", "Tell me about yourself and your family — age, state, income, "
                               "occupation/studies, housing — in your own words. I'll ask about anything I need.")]
     st.session_state.results = None
@@ -153,6 +158,7 @@ chat_col, res_col = st.columns([1, 1.5])
 
 # ---------- Sidebar ----------
 with st.sidebar:
+    st.caption(f"Orchestration: {'LangGraph' if _HAS_LANGGRAPH else 'plain Python (LangGraph not installed)'}")
     st.markdown('<div class="dossier-head">Applicant record</div>', unsafe_allow_html=True)
     filled = agent.profile
     total_fields = len(FIELDS)
